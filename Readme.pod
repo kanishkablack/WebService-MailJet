@@ -4,7 +4,7 @@
 
 =head1 SYNOPSIS
 
-	use WebService::Mailjet;
+use WebService::Mailjet;
 
     my $mailjet = WebService::MailJet->new(auth_key => 'abc',auth_secret=>'xyz');
 
