@@ -4,7 +4,7 @@ use Moo;
 use MIME::Base64;
 with 'WebService::Client';
 
-our $VERSION = '0.0001'; # VERSION
+our $VERSION = '0.0002';
 
 use Carp qw(croak);
 
@@ -41,13 +41,9 @@ __END__
 
 =encoding UTF-8
 
-=head1 NAME
-
-=head1 VERSION
-
-version 0.0001
-
 =head1 SYNOPSIS
+
+	use WebService::Mailjet;
 
     my $mailjet = WebService::MailJet->new(auth_key => 'abc',auth_secret=>'xyz');
 
@@ -66,7 +62,5 @@ version 0.0001
     my $data = ( 'title' => 'Update title of the Newsletter' );
 
     my $json = $mailjet->send_put('newsletter/123' , %data);
-
-
 
 =cut
