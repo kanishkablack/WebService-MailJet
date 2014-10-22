@@ -4,7 +4,7 @@ use Moo;
 use MIME::Base64;
 with 'WebService::Client';
 
-our $VERSION = '0.0002';
+our $VERSION = '0.0003';
 
 use Carp qw(croak);
 
@@ -19,8 +19,8 @@ sub BUILD {
     $self->ua->default_header(Authorization => "Basic " . $basic);
 }
 sub send {
-    my ($self,$method) = @_;
-    return $self->get($method);
+    my ($self,$method,$data) = @_;
+    return $self->get($method,$data);
 }
 sub send_post {
     my ($self,$method,$data) = @_;
@@ -30,6 +30,11 @@ sub send_post {
 sub send_put{
 	my ($self,$method,$data) = @_;
 	return $self->post($method,$data);
+}
+
+sub send_delete{
+    my ($self,$method,$data) = @_;
+    return $self->post($method,$data);
 }
 
 1
@@ -43,7 +48,7 @@ __END__
 
 =head1 SYNOPSIS
 
-	use WebService::Mailjet;
+    use WebService::Mailjet;
 
     my $mailjet = WebService::MailJet->new(auth_key => 'abc',auth_secret=>'xyz');
 
